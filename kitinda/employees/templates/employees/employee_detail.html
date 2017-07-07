@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block body %}
+<h1>Hello world</h1>
+    <h3>{{ object.user }}</h3>
+    <p>{{ object.rank }}</p>
+    <p>{{ object.centre }}</p>
+    <a href="{{ object.get_absolute_url }}delete/">Delete</a>
+    <a href="{{ object.get_absolute_url }}update/">Update</a>
+{% endblock body %}

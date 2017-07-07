@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% load staticfiles i18n %}
+
+{% block body %}
+<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <h1 class="logo"><a href="{% url 'home' %}">Mzito Power Application</a></h1>
+    <div class="signup">
+    <h2>New Employee</h2>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
+    <form action="" method="post" role="form">
+      {% csrf_token %}
+    {{ form.media }}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-lg btn-primary btn-block">{% trans 'Send Application' %}</button>
+        <br><br>
+    </form>
+    </div>
+</div>
+{% endblock body %}

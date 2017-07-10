@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
+
+{% load staticfiles i18n %}
+{% block pg-title %}Payment{% endblock pg-title %}
 {% block body %}
-    <h2>Make an application</h2>
+    <h2>Make a Payment</h2>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+
     <form action="" method="post" role="form">
       {% csrf_token %}
-    {{ form.media }}
-    {{ form|crispy }}
-    <button type="submit" class="btn btn-lg btn-primary btn-block">Pay</button>
-    <br><br>
+      {{ form|crispy }}
+            <button type="submit" class="btn waves-effect waves-light light-green darken-4">{% trans 'Submit' %}</button>
+        <br><br>
     </form>
 {% endblock body %}

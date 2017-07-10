@@ -22,11 +22,11 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'geoposition',
 
-    'authtools',
+    # 'authtools',
     'crispy_forms',
     'easy_thumbnails',
 
-    'kitinda.accounts',
+    # 'kitinda.accounts',
     'kitinda.authentication',
     'kitinda.core',
     'kitinda.messenger',
@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'kitinda.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db2.sqlite3'),
     }
 }
 
@@ -112,7 +112,7 @@ GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyCKKERHiiwDU37DQ719Uj93bXVlSGRMn9U'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LfzxiMUAAAAAOx-UBo7PXhP3Apkv3KYsTYkRUBx'
-AUTH_USER_MODEL = 'authtools.User'
+# AUTH_USER_MODEL = 'authtools.User'
 LOGIN_REDIRECT_URL = reverse_lazy("home")
 LOGIN_URL = reverse_lazy("accounts:login")
 

@@ -18,6 +18,15 @@
     <li class="bold"><a href="#" class="waves-effect waves-teal">Production</a></li>
     <li class="no-padding">
     <ul class="collapsible collapsible-accordion">
+        <li class="bold"><a class="collapsible-header waves-effect waves-teal">PRODUCTION</a>
+          <div class="collapsible-body">
+            <ul>
+              <li><a href="{% url 'production:new_supply' %}">New Supply</a></li>
+              <li><a href="{% url 'production:supply-add' %}">Add</a></li>
+              <li><a href="{% url 'production:supply-list' %}">All Supply</a></li>
+            </ul>
+          </div>
+        </li>
         <li class="bold"><a class="collapsible-header waves-effect waves-teal">CENTRES</a>
           <div class="collapsible-body">
             <ul>
@@ -33,6 +42,24 @@
               <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
               <li><a href="{% url 'accounts:password-change' %}">Change Password</a></li>
               <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="bold"><a class="collapsible-header waves-effect waves-teal">EMPLOYEE</a>
+          <div class="collapsible-body">
+            <ul>
+              <li><a href="{% url 'employees:employee-add' %}">New Employee</a></li>
+              <li><a href="{% url 'employees:employee-list' %}">All Employees</a></li>
+              <li><a href="{% url 'employees:rank-add' %}"> New Rank</a></li>
+              <li><a href="{% url 'employees:rank-list' %}"> All Ranks</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="bold"><a class="collapsible-header waves-effect waves-teal">PAYMENT</a>
+          <div class="collapsible-body">
+            <ul>
+              <li><a href="{% url 'payment:payment-list' %}">All Payments</a></li>
+              <li><a href="{% url 'payment:payment-add' %}">Make a Payment</a></li>
             </ul>
           </div>
         </li>

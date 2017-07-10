@@ -1,32 +1,12 @@
 {% extends 'base.html' %}
-{% load static %}
+{% load static i18n %}
+
 {% load crispy_forms_tags %}
+{% block pg-title %}Supply{% endblock pg-title %}
 {% block body %}
-    <div class="container">
-  <script src="{% static 'js/messages.js' %}"></script>
-  <script src="{% static 'js/jquery.typeahead.bundle.js' %}"></script>
-    <h2>Make an application</h2>
-    <div class="page-header">
-{#    <a href="{% url 'production:receive' %}" class="btn btn-primary pull-right">New message</a>#}
-        <h1>{% block page_header %}{% endblock %}</h1>
-      </div>
-<div class="row" style="margin-top: 1em">
-    <div class="col-md-3" style="background-color: #e8ffe9;">
-        helllo world
-{#       {% include 'messenger/includes/partial_conversations.html' with conversations=conversations active=active %}#}
-    </div>
-    <div class="col-md-9">
-{#    <form role="form" method="post" action="{% url 'production:receive' %}" id="send">#}
-    <form action="" method="post" role="form">
+      <form action="" method="post" role="form">
       {% csrf_token %}
-      <input type="hidden" name="to" value="{{ active }}">
         {{ form|crispy }}
-        <input type="hidden" name="to" value="{{ active }}">
-      <input type="hidden" name="to" value="{{ active }}">
-      <input class="form-control" type="text" name="message" placeholder="Write a message..." maxlength="1000" autocomplete="off">
-    <button type="submit" class="btn btn-lg btn-primary btn-block">Pay</button>
+          <button type="submit" class="btn waves-effect waves-light light-green darken-4">{% trans 'Submit' %}</button>
     </form>
-    </div>
-  </div>
-    </div>
 {% endblock body %}

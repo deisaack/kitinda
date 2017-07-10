@@ -9,6 +9,7 @@ from kitinda.core import views as core_views
 from kitinda.accounts import urls as acc_urls
 from .views import HomePageView, AboutPageView
 
+
 urlpatterns = [
     url(r'^$', HomePageView.as_view(), name='home'),
     url(r'^about/$', AboutPageView.as_view(), name='about'),
@@ -19,7 +20,7 @@ urlpatterns = [
     url(r'^payment/', include('kitinda.payments.urls', namespace='payment')),
     url(r'^production/', include('kitinda.productions.urls', namespace ='production')),
     url(r'^login/$', kitinda_auth_views.logini, {'template_name': 'homke.html'}, name='login'),
-    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logoaaaaaaaut'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/'}, name='logout'),
     url(r'^signup/$', kitinda_auth_views.signup, name='signup'),
     url(r'^settings/$', core_views.settings, name='settings'),
     url(r'^settings/picture/$', core_views.picture, name='picture'),

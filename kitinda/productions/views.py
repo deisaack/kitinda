@@ -19,32 +19,17 @@ from .models import Supply
 @login_required
 @ajax_required
 def users(request):
-    users = User.objects.filter(is_active=True)
-    dump = []
-    template = '{0} ({1})'
-    for user in users:
-        if user.profile.get_screen_name() != user.username:
-            dump.append(template.format(user.profile.get_screen_name(),
-                                        user.username))
-        else:
-            dump.append(user.username)
-    data = json.dumps(dump)
-    return HttpResponse(data, content_type='application/json')
-
-@login_required
-def supply_receive(request):
-    if request.method == 'POST':
-        form = SupplyForm(request.POST)
-        if form.is_valid():
-            supply = Supply()
-            supply.received_by = request.user
-            supply.user = form.cleaned_data.get('supplied_by')
-            supply.quantity = form.cleaned_data.get('quantity')
-            supply.save()
-            return redirect('/production/')
-    else:
-        form = SupplyForm()
-    return render(request, 'supply/new_supply.html', {'form': form})
+	users = User.objects.filter(is_active=True)
+	dump = []
+	template = '{0} ({1})'
+	for user in users:
+		if user.profile.get_screen_name() != user.username:
+			dump.append(template.format(user.profile.get_screen_name(),
+	                                    user.username))
+		else:
+			dump.append(user.username)
+	data = json.dumps(dump)
+	return HttpResponse(data, content_type='application/json')
 
 
 class SupplyCreateView(CreateView):
@@ -112,7 +97,7 @@ def new(request):
 				to_user = User.objects.get(username=to_user_username)
 		
 			except Exception:
-				return redirect('/production/new/')
+				return redirect('/')
 
 		# message = request.POST.get('message')
 		obj = Supply.objects.all().count()

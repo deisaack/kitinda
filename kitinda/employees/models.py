@@ -15,7 +15,7 @@ class Rank(models.Model):
 		return self.name
 
 	def get_absolute_url(self):
-		return reverse('employee:rank-detail', kwargs={'pk': self.pk})
+		return reverse('employees:rank-detail', kwargs={'pk': self.pk})
 
 class Employee(models.Model):
 	employee_id = models.CharField(max_length=20, unique=True)
@@ -28,4 +28,4 @@ class Employee(models.Model):
 		return self.employee_id
 
 	def get_absolute_url(self):
-		return reverse('employee:employee-detail', kwargs={'pk': self.pk})
+		return reverse('employees:employee-detail', kwargs={'pk': self.pk})

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% block pg-title %} Supply {% endblock pg-title %}
 {% block body %}
     {% if messages %}
 <ul class="messages">
@@ -7,8 +7,8 @@
     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}
 </ul>
+        {% include 'base2.html' %}
 {% endif %}
-    <h2>Payment</h2>
     <ul>
         {% for object in object_list %}
             <li>    <a href="{{ object.get_absolute_url }}">{{ object.user }} {{ object.quantity }}</a></li>

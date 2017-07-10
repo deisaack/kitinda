@@ -1,32 +1,13 @@
-{#{% extends 'base.html' %}#}
+{% extends 'base.html' %}
 {% load staticfiles i18n %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+
       {% block xtra-head %}
 <script src="{% static 'my_files/jquery-3.2.1.min.js' %}"></script>
    <link href="{% static 'css/messages.css' %}" rel="stylesheet">
   <script src="{% static 'js/jquery.typeahead.bundle.js' %}"></script>
   <script src="{% static 'js/supply.typehead.js' %}"></script>
 {% endblock xtra-head %}
-  {% include 'inc/_head.html' %}
 
-  </head>
-  <body>
-<header>
-        <nav class="top-nav" style="background-color: #4e5f0d;">
-            <div class="container">
-                <div class="nav-wrapper">
-                    <a class="page-title">{% block pg-title %} {% include 'inc/_brandname.html' %} {% endblock pg-title %}</a>
-                </div>
-            </div>
-        </nav>
-        {% include 'inc/_header.html' %}
-    </header>
-    <main>
-        <div class="container bsa">
-          <div class="row">
-            <div class="col s12 m9 l10">
 {% block body %}
     <form class="form-horizontal" role="form" method="post">
     {% csrf_token %}
@@ -51,16 +32,7 @@
     </div>
   </form>
   {% endblock body %}
-            </div>
-            <div class="col hide-on-small-only m3 l2">
-                {% include 'inc/_advert.html' %}
-            </div>
-          </div>
-        </div>
-    </main>
-    <footer class="page-footer" style="background-color: #4e5f0d;">
-        {% include 'inc/_footer.html' %}
-    </footer>
+    {% block scripts %}
 <script>if (!window.jQuery) { document.write('<script src="{% static 'jquery-3.2.1.min.js' %}"><\/script>'); }</script>
 <script src="{% static 'my_files/jquery.timeago.min.js' %}"></script>
 <script src="{% static 'my_files/prism.js' %}"></script>
@@ -68,5 +40,5 @@
 <script src="{% static 'my_files/search.js' %}"></script>
 <script src="{% static 'my_files/materialize.js' %}"></script>
 <script src="{% static 'my_files/init.js' %}"></script>
-</body>
-</html>
+
+{% endblock scripts %}

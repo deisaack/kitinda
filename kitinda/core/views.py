@@ -10,6 +10,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 
 from kitinda.core.forms import ChangePasswordForm, ProfileForm
 from PIL import Image
+from django.views import generic
 
 
 def home(request):

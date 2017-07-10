@@ -27,3 +27,21 @@ def signup(request):
     else:
         return render(request, 'authentication/signup.html',
                       {'form': SignUpForm()})
+
+def logini(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if not form.is_valid():
+            return render(request, 'authentication/signup.html',
+                          {'form': form})
+
+        else:
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('/production/')
+
+    else:
+        return render(request, 'authentication/signup.html',
+                      {'form': SignUpForm()})

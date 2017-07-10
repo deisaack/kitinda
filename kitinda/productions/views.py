@@ -8,9 +8,9 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from kitinda.decorators import ajax_required
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 import json
-
+from django.urls import reverse
 User = settings.AUTH_USER_MODEL
 from .models import Supply
 
@@ -93,10 +93,10 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
+from django.contrib import messages
 
 
 @login_required
-
 def new(request):
 	if request.method == 'POST':
 		received_by = request.user
@@ -115,11 +115,14 @@ def new(request):
 				return redirect('/production/new/')
 
 		# message = request.POST.get('message')
-
+		obj = Supply.objects.all().count()
+		obj = Supply
 		if received_by != to_user:
 			Supply.send_message(received_by, to_user, quantity)
-		
-		return redirect('/admin/productions/testsupply/')
+			messages.success(request, 'The supply was successfully saved.')
+		return HttpResponseRedirect(reverse('production:supply-list'))
+
+		# return redirect(obj)
 		
 	else:
 		return render(request, 'productions/new.html')

@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
+{% block pg-title %}Centres{% endblock pg-title %}
 {% block body %}
-<h1>Hello world</h1>
     <h3>{{ object.name }}</h3>
     <p>{{ object.description }}</p>
     <p>{{ object.location }}</p>
-    <a href="{{ object.get_absolute_url }}delete/">Delete</a>
-    <a href="{{ object.get_absolute_url }}update/">Update</a>
+    <a class="btn waves-effect waves-green red darken-3" href="{{ object.get_absolute_url }}delete/">Delete</a>
+    <a class="btn waves-effect waves-green light-green darken-3" href="{{ object.get_absolute_url }}update/">Update</a>
 {% endblock body %}

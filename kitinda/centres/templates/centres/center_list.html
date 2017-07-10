@@ -1,7 +1,6 @@
 {% extends "base.html" %}
-
+{% block pg-title %}Centres{% endblock pg-title %}
 {% block body %}
-    <h2>Centres</h2>
     <ul>
         {% for object in centre_list %}
             <li>    <a href="{{ object.get_absolute_url }}">{{ object.name }}</a></li>

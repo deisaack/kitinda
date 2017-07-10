@@ -1,0 +1,43 @@
+{% load static %}
+<div class="container">
+  <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
+      <i class="material-icons">menu</i>
+  </a>
+</div>
+
+<ul id="nav-mobile" class="side-nav fixed" style="transform: translateX(0px);">
+<li class="logo"><a id="logo-container" href="#" class="brand-logo">
+    <img src="{% static 'img/logo.jpg' %}" alt="">
+    <li class="search">
+      <div class="search-wrapper card">
+        <input id="search"><i class="material-icons">search</i>
+        <div class="search-results"></div>
+      </div>
+    </li>
+    <li class="bold"><a href="#" class="waves-effect waves-teal">Home</a></li>
+    <li class="bold"><a href="#" class="waves-effect waves-teal">Production</a></li>
+    <li class="no-padding">
+    <ul class="collapsible collapsible-accordion">
+        <li class="bold"><a class="collapsible-header waves-effect waves-teal">CENTRES</a>
+          <div class="collapsible-body">
+            <ul>
+              <li><a href="{% url 'centre:centre-list' %}">All Centres</a></li>
+              <li><a href="{% url 'centre:centre-add' %}">New Centre</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="bold"><a class="collapsible-header waves-effect waves-teal">ACCOUNTS</a>
+          <div class="collapsible-body">
+            <ul>
+              <li><a href="{% url 'accounts:login' %}">Login</a></li>
+              <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+              <li><a href="{% url 'accounts:password-change' %}">Change Password</a></li>
+              <li><a href="{% url 'accounts:signup' %}">Signup</a></li>
+            </ul>
+          </div>
+        </li>
+  </ul>
+</li>
+<li class="bold"><a href="#" class="waves-effect waves-green">Showcase</a></li>
+<li class="bold"><a href="#" class="waves-effect waves-teal">Themes<span class="new badge"></span></a></li>
+</ul>

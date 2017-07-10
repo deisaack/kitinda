@@ -1,4 +1,5 @@
 import os
+from django.core.urlresolvers import reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -11,16 +12,21 @@ ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0']
 
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
     'django.contrib.auth',
+    'django_admin_bootstrapped',
+    'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
-    'crispy_forms',
     'geoposition',
 
+    'authtools',
+    'crispy_forms',
+    'easy_thumbnails',
+
+    'kitinda.accounts',
     'kitinda.authentication',
     'kitinda.core',
     'kitinda.messenger',
@@ -98,9 +104,6 @@ STATICFILES_DIRS = (
 MEDIA_ROOT = PROJECT_DIR.parent.child('media')
 MEDIA_URL = '/media/'
 
-LOGIN_URL = '/'
-LOGIN_REDIRECT_URL = '/feeds/'
-
 ALLOWED_SIGNUP_DOMAINS = ['*']
 
 FILE_UPLOAD_TEMP_DIR = '/tmp/'
@@ -109,5 +112,9 @@ GEOPOSITION_GOOGLE_MAPS_API_KEY = 'AIzaSyCKKERHiiwDU37DQ719Uj93bXVlSGRMn9U'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 GOOGLE_RECAPTCHA_SECRET_KEY = '6LfzxiMUAAAAAOx-UBo7PXhP3Apkv3KYsTYkRUBx'
+AUTH_USER_MODEL = 'authtools.User'
+LOGIN_REDIRECT_URL = reverse_lazy("home")
+LOGIN_URL = reverse_lazy("accounts:login")
 
+THUMBNAIL_EXTENSION = 'png'
 

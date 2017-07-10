@@ -7,7 +7,6 @@
     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
     {% endfor %}
 </ul>
-        {% include 'base2.html' %}
 {% endif %}
     <ul>
         {% for object in object_list %}

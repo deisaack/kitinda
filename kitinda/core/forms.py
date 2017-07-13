@@ -20,10 +20,7 @@ class ProfileForm(forms.ModelForm):
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         max_length=75,
         required=False)
-    url = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control'}),
-        max_length=50,
-        required=False)
+
     location = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control'}),
         max_length=50,
@@ -32,7 +29,7 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['first_name', 'last_name', 'job_title',
-                  'email', 'url', 'location', ]
+                  'email', 'location', ]
 
 
 class ChangePasswordForm(forms.ModelForm):

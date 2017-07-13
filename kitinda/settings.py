@@ -22,11 +22,9 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'geoposition',
 
-    # 'authtools',
     'crispy_forms',
     'easy_thumbnails',
 
-    # 'kitinda.accounts',
     'kitinda.authentication',
     'kitinda.core',
     'kitinda.messenger',

@@ -7,7 +7,7 @@ from django.db.models import Max
 User = settings.AUTH_USER_MODEL
 
 class Supply(models.Model):
-	supplied_by = models.ForeignKey(User, related_name='+', default=1)
+	supplied_by = models.ForeignKey(User, related_name='+', default=1, on_delete=models.CASCADE)
 	quantity = models.FloatField('Quantity in litres', default=0.00)
 	date = models.DateTimeField(auto_now_add=True)
 	received_by = models.ForeignKey(User, related_name='+', default=1)
@@ -20,7 +20,7 @@ class Supply(models.Model):
 		return str(self.quantity)
 
 	@staticmethod
-	def send_message(received_by, to_user, quantity):
+	def new_supply(received_by, to_user, quantity):
 		current_user_message = Supply(received_by=received_by,
 		                       quantity = quantity,
 		                       supplied_by=to_user,

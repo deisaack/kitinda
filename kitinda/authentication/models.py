@@ -9,15 +9,14 @@ from django.conf import settings
 from django.db import models
 from django.db.models.signals import post_save
 from django.utils.encoding import python_2_unicode_compatible
-
+from django.contrib import admin
 User = settings.AUTH_USER_MODEL
+from kitinda.centres.models import Centre
 
-@python_2_unicode_compatible
+
 class Profile(models.Model):
-    user = models.OneToOneField(User)
-    location = models.CharField(max_length=50, null=True, blank=True)
-    url = models.CharField(max_length=50, null=True, blank=True)
-    job_title = models.CharField(max_length=50, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    centre = models.ForeignKey(Centre,default=1)
 
     class Meta:
         db_table = 'auth_profile'
@@ -25,12 +24,6 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
-    def get_url(self):
-        url = self.url
-        if "http://" not in self.url and "https://" not in self.url and len(self.url) > 0:  # noqa: E501
-            url = "http://" + str(self.url)
-
-        return url
 
     def get_picture(self):
         no_picture = 'http://trykitinda.vitorfs.com/static/img/user.png'
@@ -72,3 +65,6 @@ def save_user_profile(sender, instance, **kwargs):
 
 post_save.connect(create_user_profile, sender=User)
 post_save.connect(save_user_profile, sender=User)
+
+
+admin.site.register(Profile)

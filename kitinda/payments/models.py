@@ -17,3 +17,4 @@ class Payment(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('payment:payment-detail', kwargs={'pk': self.pk})
+

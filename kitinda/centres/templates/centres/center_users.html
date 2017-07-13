@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block pg-title %}Centres{% endblock pg-title %}
+{% block body %}
+    <h3>{{ object.name }}</h3>
+    {% for user in user_list %}
+    <h6>{{ forloop.counter }}. <small>{{ user }}</small></h6>
+    {% endfor %}
+    <a href="{{ object.get_absolute_url }}" class="btn">Back To profile</a>
+<h5>{{ test_users }}</h5>
+{% endblock body %}

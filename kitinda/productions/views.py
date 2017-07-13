@@ -103,7 +103,7 @@ def new(request):
 		obj = Supply.objects.all().count()
 		obj = Supply
 		if received_by != to_user:
-			Supply.send_message(received_by, to_user, quantity)
+			Supply.new_supply(received_by, to_user, quantity)
 			messages.success(request, 'The supply was successfully saved.')
 		return HttpResponseRedirect(reverse('production:supply-list'))
 

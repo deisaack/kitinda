@@ -50,7 +50,6 @@ def settings(request):
             user.last_name = form.cleaned_data.get('last_name')
             user.profile.job_title = form.cleaned_data.get('job_title')
             user.email = form.cleaned_data.get('email')
-            user.profile.url = form.cleaned_data.get('url')
             user.profile.location = form.cleaned_data.get('location')
             user.save()
             messages.add_message(request,
@@ -60,7 +59,6 @@ def settings(request):
     else:
         form = ProfileForm(instance=user, initial={
             'job_title': user.profile.job_title,
-            'url': user.profile.url,
             'location': user.profile.location
             })
     return render(request, 'core/settings.html', {'form': form})

@@ -21,7 +21,7 @@ class Employee(models.Model):
 	employee_id = models.CharField(max_length=20, unique=True)
 	user = models.OneToOneField(User)
 	centre = models.ForeignKey(Centre)
-	rank = models.ForeignKey(Rank)
+	rank = models.ForeignKey(Rank, on_delete=models.CASCADE)
 	description = models.CharField(max_length=250, null=True, blank=True)
 
 	def __str__(self):
@@ -29,3 +29,4 @@ class Employee(models.Model):
 
 	def get_absolute_url(self):
 		return reverse('employees:employee-detail', kwargs={'pk': self.pk})
+

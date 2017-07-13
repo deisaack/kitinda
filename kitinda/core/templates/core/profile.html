@@ -26,9 +26,6 @@
           {% if page_user.profile.location %}
           <li><span class="glyphicon glyphicon-map-marker"></span> {{ page_user.profile.location }}</li>
           {% endif %}
-          {% if page_user.profile.url %}
-          <li><span class="glyphicon glyphicon-globe"></span> <a href="{{ page_user.profile.get_url }}" target="_blank">{{ page_user.profile.get_url }}</a></li>
-          {% endif %}
         </ul>
       </div>
       <div class="col-md-9">

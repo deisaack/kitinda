@@ -6,14 +6,12 @@ from django.contrib import admin
 
 from kitinda.authentication import views as kitinda_auth_views
 from kitinda.core import views as core_views
-from kitinda.accounts import urls as acc_urls
 from .views import HomePageView, AboutPageView
 
 
 urlpatterns = [
     url(r'^$', HomePageView.as_view(), name='home'),
     url(r'^about/$', AboutPageView.as_view(), name='about'),
-    url(r'^', include(acc_urls, namespace='accounts')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^centres/', include('kitinda.centres.urls', namespace='centre')),
     url(r'^employees/', include('kitinda.employees.urls', namespace='employees')),
